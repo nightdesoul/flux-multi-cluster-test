@@ -77,7 +77,7 @@ kubectl create ns flux
 
 Generate flux manifests and apply them
 ```bash
-fluxctl install --git-email=nightdesoul@gmail.com --git-url=git@github.com:nightdesoul/flux-multi-cluster-test.git --git-path=clusters/prod,common/prod --manifest-generation=true --git-branch=main --namespace=flux | kubectl apply -f -
+fluxctl install --git-email=nightdesoul@gmail.com --git-url=git@github.com:nightdesoul/flux-multi-cluster-test.git --git-path=clusters/dev,common/dev --manifest-generation=true --git-branch=main --namespace=flux | kubectl apply -f -
 ```
 
 Get public ssh key from flux and add it to github
@@ -91,4 +91,5 @@ fluxctl sync --k8s-fwd-ns flux
 ```
 
 ---
+#TODO Add prod cluster example
 #TODO Change nodes ip in kubernetes to correct interface
