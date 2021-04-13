@@ -1,0 +1,14 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: common
+  namespace: common
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: hello-kubernetes
+      containers:
+      - image: paulbouwer/hello-kubernetes:1
+        name: hello-kubernetes
