@@ -1,0 +1,14 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: common
+  namespace: common
+spec:
+  template:
+    spec:
+      containers:
+      - name: hello-kubernetes # (1)
+        env:
+        - name: MESSAGE
+          value: Hello Kubernetes! - common prod
