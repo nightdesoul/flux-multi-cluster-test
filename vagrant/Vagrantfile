@@ -1,0 +1,24 @@
+NODES = [["dev-master", "192.168.6.11"], ["prod-master", "192.168.6.21"], ["dev-worker", "192.168.6.12"], ["prod-worker", "192.168.6.22"]]
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.box_check_update = false
+
+  NODES.each do |n| 
+    config.vm.define n[0] do |node|
+      node.vm.provider "virtualbox" do |vb|
+          vb.name = n[0]
+          vb.memory = 2048
+          vb.cpus = 2
+      end
+      node.vm.hostname = n[0]
+      node.vm.network :private_network, ip: n[1]
+      node.vm.provision "disable-swap", type: "shell", path: "scripts/disable-swap.sh"
+      node.vm.provision "allow-bridged-traffic", type: "shell", path: "scripts/allow-bridged-traffic.sh"
+      node.vm.provision "install-containerd", type: "shell", path: "scripts/install-containerd.sh"
+      node.vm.provision "install-k8s-bins", type: "shell", path: "scripts/install-k8s-bins.sh"
+      node.vm.provision "configure-networkmanager", type: "shell", path: "scripts/confugure-networkmanager.sh"
+      # TODO add wget install and flux
+    end
+  end
+end
