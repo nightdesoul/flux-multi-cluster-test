@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
       node.vm.provision "install-containerd", type: "shell", path: "scripts/install-containerd.sh"
       node.vm.provision "install-k8s-bins", type: "shell", path: "scripts/install-k8s-bins.sh"
       node.vm.provision "configure-networkmanager", type: "shell", path: "scripts/confugure-networkmanager.sh"
-      # TODO add wget install and flux
+      node.vm.provision "change-kubelet-ip", type: "shell", path: "scripts/change-kubelet-ip.sh"
     end
   end
 end

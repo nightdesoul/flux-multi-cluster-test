@@ -118,6 +118,3 @@ Sync cluster with github
 ```bash
 fluxctl sync --k8s-fwd-ns flux
 ```
-
----
-#TODO Change nodes ip in kubernetes to correct interface
