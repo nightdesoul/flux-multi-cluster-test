@@ -90,6 +90,34 @@ Sync cluster with github
 fluxctl sync --k8s-fwd-ns flux
 ```
 
+### Install flux on prod cluster
+
+Dowload flux
+```bash
+wget https://github.com/fluxcd/flux/releases/download/1.22.1/fluxctl_linux_amd64
+mv fluxctl_linux_amd64 /usr/local/bin/fluxctl
+chmod +x /usr/local/bin/fluxctl
+```
+
+Create flux kubernetes namespace
+```bash
+kubectl create ns flux
+```
+
+Generate flux manifests and apply them
+```bash
+fluxctl install --git-email=nightdesoul@gmail.com --git-url=git@github.com:nightdesoul/flux-multi-cluster-test.git --git-path=clusters/prod,common/prod --manifest-generation=true --git-branch=main --namespace=flux | kubectl apply -f -
+```
+
+Get public ssh key from flux and add it to github
+```bash
+fluxctl identity --k8s-fwd-ns flux
+```
+
+Sync cluster with github
+```bash
+fluxctl sync --k8s-fwd-ns flux
+```
+
 ---
-#TODO Add prod cluster example  
 #TODO Change nodes ip in kubernetes to correct interface
