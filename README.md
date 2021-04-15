@@ -1,6 +1,7 @@
 # flux-multi-cluster-test
 
-Inspired by post from [medium](https://berndonline.medium.com/how-to-manage-kubernetes-clusters-the-gitops-way-with-flux-cd-c5cf9103a315)
+Inspired by post from [medium](https://berndonline.medium.com/how-to-manage-kubernetes-clusters-the-gitops-way-with-flux-cd-c5cf9103a315)  
+**In this example used Flux v1 this version is deprecated**
 
 ## Insall requirements
 
