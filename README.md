@@ -65,7 +65,9 @@ kubectl apply -f custom-resources.yaml
 
 Install flux
 ```bash
-curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
+wget https://github.com/fluxcd/flux/releases/download/1.22.1/fluxctl_linux_amd64
+mv fluxctl_linux_amd64 /usr/local/bin/fluxctl
+chmod +x /usr/local/bin/fluxctl
 ```
 
 Create flux kubernetes namespace
@@ -92,7 +94,9 @@ fluxctl sync --k8s-fwd-ns flux
 
 Install flux
 ```bash
-curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
+wget https://github.com/fluxcd/flux/releases/download/1.22.1/fluxctl_linux_amd64
+mv fluxctl_linux_amd64 /usr/local/bin/fluxctl
+chmod +x /usr/local/bin/fluxctl
 ```
 
 Create flux kubernetes namespace
